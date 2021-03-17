@@ -15,6 +15,8 @@ interface ContactsContextData {
     contatos: ContactsUserProps[];
     deleteContact: (id: number) => void;
     createContact: (company: string, name: string, email: string, phone: string, role: string, contactAdmin: boolean) => void
+    getData: () => void,
+    isLoading: boolean
 }
 
 export const ContactsContext = createContext({} as ContactsContextData)
@@ -26,21 +28,25 @@ interface ContactsProviderProps {
 export default function ContactsProvider({children}: ContactsProviderProps){
 
     const [contatos, setContatos] = useState<ContactsUserProps[]>([]);
+    const [isLoading, setIsLoading] = useState(false)
 
-    function deleteContact(id: number){
-        api.delete(`contacts/${id}`)
-        getData();
+    async function deleteContact(id: number){
+        await api.delete(`contacts/${id}`)
+        await getData()
     }
 
     async function getData(){
         await api.get('contacts').then(resp => {
             setContatos(resp.data);
+            setIsLoading(true)
         }).catch( e => {
             console.log(e);
-        } );
+        } ).finally(()=> {
+            setIsLoading(false);
+        });
     }
 
-    function createContact(company: string, name: string, email: string, phone: string, role: string, contactAdmin: boolean){
+    async function createContact(company: string, name: string, email: string, phone: string, role: string, contactAdmin: boolean){
         const body = {
             id: Math.random(),
             company: company,
@@ -50,12 +56,9 @@ export default function ContactsProvider({children}: ContactsProviderProps){
             role: role,
             contactAdmin: contactAdmin
         }
-        api.post('contacts/',body)
+        await api.post('contacts/',body)
+        await getData()
     }
-
-    useEffect(()=>{
-        getData()
-    }, [])
 
 
     return(
@@ -63,6 +66,8 @@ export default function ContactsProvider({children}: ContactsProviderProps){
             contatos,
             deleteContact,
             createContact,
+            getData,
+            isLoading
         }}>
             {children}
         </ContactsContext.Provider>

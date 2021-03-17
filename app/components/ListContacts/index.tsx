@@ -11,7 +11,7 @@ interface Props {
 
 export default function ListContacts({navigation}: Props){
 
-    const { contatos } = useContext(ContactsContext)
+    const { contatos, getData, isLoading } = useContext(ContactsContext)
 
     const [dados, setDados] = useState(contatos)
 
@@ -22,6 +22,10 @@ export default function ListContacts({navigation}: Props){
         setDados(data)
     }
 
+    useEffect(()=> {
+        setDados(contatos);
+    }, [contatos])
+
     return(
         <Container>
             <Title>Contatos Cadastrados</Title>
@@ -31,6 +35,7 @@ export default function ListContacts({navigation}: Props){
             </SearchContainer>
             <ListContainer
                 data={dados}
+                refreshing={isLoading}
                 renderItem={({item}: any) => (
                     <CardList key={item.id} onPress={() => navigation.navigate('ProfileCompany', {id: item.id})}>
                         <InformationContainer>

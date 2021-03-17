@@ -8,17 +8,7 @@ import { ContactsContext } from '../../hooks/ContactsContext'
 
 export default function Contacts({navigation}){
 
-    const { contatos } = useContext(ContactsContext)
-
-    const [dados,setDados] = useState<object[]>()
-
-    function getDados(){
-        setDados(contatos)
-    }
-
-    useEffect(()=>{
-        getDados()
-    }, [contatos, dados])
+    const { contatos, getData } = useContext(ContactsContext)
     
     return(
         <Container>
@@ -29,12 +19,12 @@ export default function Contacts({navigation}){
                 <TextHeader>Contatos</TextHeader>
             </Header>
             {
-                dados?.length === 0 &&
-                <EmptyContacts />
+                contatos?.length !== 0 &&
+                <ListContacts navigation={navigation}/>
             }
             {
-                dados?.length !== 0 &&
-                <ListContacts navigation={navigation}/>
+                contatos?.length === 0 &&
+                <EmptyContacts />
             }
             <ButtonContainer>
                 <BtnCadastrarContato onPress={() => navigation.navigate('NewContact')}>

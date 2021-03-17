@@ -1,11 +1,20 @@
 {
   "contacts": [
     {
-      "id": 0.28927220627390426,
+      "id": 0.3902036614890626,
       "company": "Agility",
       "name": "Welles",
       "email": "wellespaiva20@gmail.com",
-      "phone": "88997437025",
+      "phone": "88977437025",
+      "role": "Progamador",
+      "contactAdmin": true
+    },
+    {
+      "id": 0.18615104027875629,
+      "company": "Agility",
+      "name": "Paulo Cesar",
+      "email": "wellespaiva20@gmail.com",
+      "phone": "88999034048",
       "role": "Progamador",
       "contactAdmin": true
     }
