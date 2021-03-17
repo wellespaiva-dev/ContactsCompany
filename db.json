@@ -1,0 +1,13 @@
+{
+  "contacts": [
+    {
+      "id": "3",
+      "company": "Nome da Companhia 3",
+      "name": "Nome Completo 3",
+      "email": "email3@gmail.com",
+      "role": "Diretor",
+      "phone": "(33)98765-4323",
+      "contactAdmin": false
+    }
+  ]
+}
