@@ -31,3 +31,6 @@ $ json-server db.json
 - Styled Components
 - JSON Server
 - Context API
+- React Navigation
+- React Native SVG
+- React Native Vector Icons
