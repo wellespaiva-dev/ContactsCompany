@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Container, Title, SearchContainer, SearchText, CardList, ListContainer, InformationContainer, EmpresaName, PessoaName } from './styles'
 import SvgSearch from '../../assets/svg/search'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { Data, Datas } from '../../data/data'
 import colors from '../../assets/colors'
 import { ContactsContext } from '../../hooks/ContactsContext'
 

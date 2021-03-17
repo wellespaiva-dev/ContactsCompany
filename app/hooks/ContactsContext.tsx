@@ -14,6 +14,7 @@ interface ContactsUserProps {
 interface ContactsContextData {
     contatos: ContactsUserProps[];
     deleteContact: (id: number) => void;
+    createContact: (company: string, name: string, email: string, phone: string, role: string, contactAdmin: boolean) => void
 }
 
 export const ContactsContext = createContext({} as ContactsContextData)
@@ -24,19 +25,32 @@ interface ContactsProviderProps {
 
 export default function ContactsProvider({children}: ContactsProviderProps){
 
-    const [contatos, setContatos] = useState<ContactsUserProps[]>();
+    const [contatos, setContatos] = useState<ContactsUserProps[]>([]);
 
     function deleteContact(id: number){
         api.delete(`contacts/${id}`)
         getData();
     }
 
-    function getData(){
-        api.get('contacts').then(resp => {
+    async function getData(){
+        await api.get('contacts').then(resp => {
             setContatos(resp.data);
         }).catch( e => {
             console.log(e);
         } );
+    }
+
+    function createContact(company: string, name: string, email: string, phone: string, role: string, contactAdmin: boolean){
+        const body = {
+            id: Math.random(),
+            company: company,
+            name: name,
+            email: email,
+            phone: phone,
+            role: role,
+            contactAdmin: contactAdmin
+        }
+        api.post('contacts/',body)
     }
 
     useEffect(()=>{
@@ -48,6 +62,7 @@ export default function ContactsProvider({children}: ContactsProviderProps){
         <ContactsContext.Provider value={{
             contatos,
             deleteContact,
+            createContact,
         }}>
             {children}
         </ContactsContext.Provider>

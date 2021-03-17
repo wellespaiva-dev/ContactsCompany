@@ -18,7 +18,7 @@ export default function Contacts({navigation}){
 
     useEffect(()=>{
         getDados()
-    }, [contatos])
+    }, [contatos, dados])
     
     return(
         <Container>
