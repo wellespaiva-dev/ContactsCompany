@@ -1,28 +1,27 @@
 const colors = {
+  gray: '#3E4345',
 
-    gray: '#3E4345',
+  lightGray: '#E3E5E5',
 
-    lightGray: '#E3E5E5',
+  green: '#82C85A',
 
-    green: '#82C85A',
+  orange: '#F3A72E',
 
-    orange: '#F3A72E',
+  lightOrange: '#FDF2E0',
 
-    lightOrange: '#FDF2E0',
+  blue: '#00508C',
 
-    blue: '#00508C',
+  white: '#FFFFFF',
 
-    white: '#FFFFFF',
+  borderColor: '#C6CACC',
 
-    borderColor: '#C6CACC',
+  matteGray: '#919699',
 
-    matteGray: '#919699',
+  informationGray: '#5E6366',
 
-    informationGray: '#5E6366',
+  modalGray: '#131313',
 
-    modalGray: '#131313',
-
-    black: '#000000'
-}
+  black: '#000000',
+};
 
 export default colors;

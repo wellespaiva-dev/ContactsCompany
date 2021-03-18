@@ -9,7 +9,7 @@ export const EmptyContainer = styled.View`
 `;
 
 export const TextEmpty = styled.Text`
-  font-family: "Poppins-Regular";
+  font-family: 'Poppins-Regular';
   color: ${colors.gray};
   font-size: 17px;
   text-align: center;
