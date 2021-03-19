@@ -26,7 +26,13 @@ export default function ListContacts({navigation}: Props) {
   const [dados, setDados] = useState(contatos);
 
   const handlerSearch = text => {
-    const data = contatos.filter(Data => Data.company.includes(text));
+    const lowerText = text.toLowerCase();
+    const data = contatos.filter(
+      Data =>
+        Data.company.toLowerCase().includes(lowerText) ||
+        Data.name.toLowerCase().includes(lowerText) ||
+        Data.email.toLowerCase().includes(lowerText),
+    );
     setDados(data);
   };
 

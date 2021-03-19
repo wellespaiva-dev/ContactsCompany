@@ -45,20 +45,20 @@ export default function ContactsProvider({children}: ContactsProviderProps) {
   const [contatos, setContatos] = useState<ContactsUserProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  async function deleteContact(id: number) {
-    await api
+  function deleteContact(id: number) {
+    api
       .delete(`contacts/${id}`)
       .then(resp => {
         console.log(resp.data);
+        getData();
       })
       .catch(e => {
         console.log(e);
       });
-    await getData();
   }
 
-  async function getData() {
-    await api
+  function getData() {
+    api
       .get('contacts')
       .then(resp => {
         setContatos(resp.data);
@@ -72,7 +72,7 @@ export default function ContactsProvider({children}: ContactsProviderProps) {
       });
   }
 
-  async function createContact(
+  function createContact(
     company: string,
     name: string,
     email: string,
@@ -89,18 +89,18 @@ export default function ContactsProvider({children}: ContactsProviderProps) {
       role: role,
       contactAdmin: contactAdmin,
     };
-    await api
+    api
       .post('contacts', body)
       .then(resp => {
         console.log(resp.data);
+        getData();
       })
       .catch(e => {
         console.log(e);
       });
-    await getData();
   }
 
-  async function updateContact(
+  function updateContact(
     id: number,
     company: string,
     name: string,
@@ -117,15 +117,15 @@ export default function ContactsProvider({children}: ContactsProviderProps) {
       role: role,
       contactAdmin: contactAdmin,
     };
-    await api
+    api
       .put(`contacts/${id}`, body)
       .then(resp => {
         console.log(resp.data);
+        getData();
       })
       .catch(e => {
         console.log(e);
       });
-    await getData();
   }
 
   return (
