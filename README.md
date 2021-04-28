@@ -17,10 +17,10 @@ Runs next which starts app in development mode
 bash
 $ yarn start
 
-//Open other terminal: 
+Open other terminal: 
 $ yarn android
 
-//Open other terminal: 
+Open other terminal: 
 $ json-server db.json
 
 
