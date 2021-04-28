@@ -1,4 +1,4 @@
-# ContactsCompany App - Trade Up
+# ContactsCompany App
 
 A contacts application, where you can view a list of contacts, and add, delete or edit a contact.
 
